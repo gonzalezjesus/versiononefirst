@@ -43,8 +43,9 @@ public class BatchableHandler implements Database.Batchable<sObject>
         List<Batchable> nonNullCommands = new List<Batchable>();
 
         if (commands != null)
-            for (Batchable nonNullcommand : commands)
-                nonNullcommands.add(nonNullcommand);
+            for (Batchable command : commands)
+                if (command != null)
+                    nonNullcommands.add(command);
 
         return nonNullCommands;
     }
